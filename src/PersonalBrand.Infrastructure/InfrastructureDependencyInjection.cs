@@ -19,7 +19,7 @@ namespace PersonalBrand.Infrastructure
             {
                 options
                     .UseLazyLoadingProxies()
-                        .UseNpgsql(configuration.GetConnectionString("Def"));
+                        .UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
             });
 
             return service;

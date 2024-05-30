@@ -33,6 +33,8 @@ namespace IdentityLayer.cs
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
 
