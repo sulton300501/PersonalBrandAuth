@@ -16,13 +16,18 @@ namespace IdentityLayer.cs.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(Register registerModel)
         {
+            var user = await _userManager.FindByEmailAsync(registerModel.Email);
+            var token = await user.GenerateToken(_configuration, _userManager);
+           
             var response=await _userManager.CreateAsync(new UserModel
+
             {
                 FirstName = registerModel.Firstname,
                 Email = registerModel.Email,
             });
 
-            return Ok(response);
+            return Ok(token);
+           
         }
 
         [HttpPost]
